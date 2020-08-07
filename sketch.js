@@ -20,7 +20,7 @@ function setup() {
 	groundSprite=createSprite(width/2, height-35, width,10);
 	groundSprite.shapeColor=color("yellow")
 
-	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
+	ground = Bodies.rectangle(width/2, height-35, width, 10 , {isStatic:true} );
 	World.add(world,ground)
 
 
@@ -31,7 +31,7 @@ function setup() {
 	right = Bodies.rectangle(750,610,20,100,{isStatic:true});
 	World.add(world,right);
 
-	ball = new Ball(100,100);
+	ball = new Ball(100,600);
 
 	Engine.run(engine);
   
@@ -49,6 +49,10 @@ function draw() {
   drawSprites();
  
 }
-
+function keyPressed() {
+	if (keyCode === UP_ARROW) {
+	   Matter.Body.applyForce(ball.body,ball.body.position,{x:60,y:-50})
+	 }
+   }
 
 
